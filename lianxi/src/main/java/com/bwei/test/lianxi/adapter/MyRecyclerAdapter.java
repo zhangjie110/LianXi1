@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,16 +21,17 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     private Context context;
     private List<Bean.DataBean> list;
-private ImageLoader loader;
+    private ImageLoader loader;
+
     public MyRecyclerAdapter(Context context, List<Bean.DataBean> list) {
         this.context = context;
         this.list = list;
-        loader=ImageLoader.getInstance();
+        loader = ImageLoader.getInstance();
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder holder=new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item,parent,false));
+        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item, parent, false));
 
 
         return holder;
@@ -40,7 +40,7 @@ private ImageLoader loader;
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.tv.setText(list.get(position).getGoods_name());
-        ImageLoader.getInstance().displayImage(list.get(position).getGoods_img(),holder.iv);
+        ImageLoader.getInstance().displayImage(list.get(position).getGoods_img(), holder.iv);
 
 
     }
@@ -51,13 +51,15 @@ private ImageLoader loader;
     }
 }
 
-class MyViewHolder extends RecyclerView.ViewHolder{
+class MyViewHolder extends RecyclerView.ViewHolder {
     TextView tv;
     ImageView iv;
+    public Context context;
 
     public MyViewHolder(View itemView) {
         super(itemView);
-        tv=(TextView) itemView.findViewById(R.id.tv_title);
-        iv=(ImageView) itemView.findViewById(R.id.iv_image);
+        tv = (TextView) itemView.findViewById(R.id.tv_title);
+        iv = (ImageView) itemView.findViewById(R.id.iv_image);
+
     }
 }
